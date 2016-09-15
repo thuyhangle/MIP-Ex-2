@@ -9,6 +9,13 @@ function getAllCourses(req,res,next)
 }
 
 router.route('/courses')
-  .get(getAllCourses);
+  .get(getAllCourses)
+  .post(postNewCourse);
+
+function postNewCourse(req,res,next)
+{
+  var newCourse = data.addCourse(req.body);
+  res.send({course: newCourse});
+}
 
 module.exports = router

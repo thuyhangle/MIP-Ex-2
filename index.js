@@ -8,8 +8,8 @@ var app = express();
 // You can store key-value pairs in express, here we store the port setting
 app.set('port', (process.env.PORT || 3000));
 
-// bodyParser needs to be configured for parsing JSON from HTTP body
-app.use(bodyParser.json());
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Mount our routes behind /api/ prefix
 app.use('/api', students);
@@ -19,6 +19,11 @@ app.use('/api', grades)
 // Simple hello world route
 app.get('/', function(req, res) {
     res.send("Hello class");
+});
+
+app.post('/', function(req, res) {
+    console.log(req.body);
+    res.send("yo");
 });
 
 // start listening for incoming HTTP connections

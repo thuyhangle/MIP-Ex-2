@@ -1,3 +1,4 @@
+var _ = require('underscore');
 var studentData = [
     {
         id: 1,
@@ -93,11 +94,16 @@ exports.getCourseById = function(id)
 
 exports.addStudent = function(student)
 {
-    var maxId = _.max(studentData, function(student) { return student.id });
-    console.log(maxID);
-    var newStudent = { "id": maxId.id + 1, "name": req.body.name, "address": req.body.address, "class": req.body.class };
+    // var maxId = _.max(studentData, function(student) { return student.id });
+    // console.log(maxID);
+    var newStudent = { "id": parseInt(student.id), "name": student.name, "address": student.address, "class": student.class };
     studentData.push(newStudent);
-    res.send({ sucess: true, student: newStudent});
+    return newStudent;
 }
 
-
+exports.addCourse = function(course)
+{
+    var newCourse = { "id": parseInt(course.id), "name": course.name, "description": course.description };
+    courseData.push(newCourse);
+    return newCourse;
+}

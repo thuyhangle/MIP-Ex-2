@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var app = express();
 var data = require('../src/data');
 
 function getAllStudents(req,res,next)
@@ -14,7 +13,7 @@ router.route('/students')
 
 function postNewStudent(req,res,next)
 {
-  data.addStudent(red.body);
+  var newStudent = data.addStudent(req.body);
   res.send({student: newStudent});
 }
 

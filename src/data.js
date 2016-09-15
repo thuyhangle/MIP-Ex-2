@@ -91,7 +91,6 @@ exports.getCourseById = function(id)
     });
 }
 
-
 exports.addStudent = function(student)
 {
     var maxId = _.max(studentData, function(student) { return student.id });
